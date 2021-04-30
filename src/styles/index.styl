@@ -1,0 +1,179 @@
+#oa-slider
+  position relative
+  width 100%
+  height 100vh
+  box-sizing border-box
+  display block
+  padding 0 16px
+
+  .oa-slide-nav
+    position absolute
+    width 48px
+    height 48px
+    display block
+    top 50%
+    margin -24px 0 0
+    background #fff
+    z-index 160
+    cursor pointer
+    transition background-color 0.3s
+
+    @media (max-width: 500px)
+      top 100%
+      margin-top -48px
+
+    &:active,
+    &:hover
+      background #363636
+
+      &:before,
+      &:after
+        background #fff
+
+    &:before,
+    &:after
+      position absolute
+      content ''
+      top 50%
+      left 50%
+      background #363636
+      width 12px
+      height .5px
+
+    &:before
+      transform rotate(45deg)
+      margin -4px 0 0 -6px
+
+    &:after
+      transform rotate(-45deg)
+      margin 4px 0 0 -6px
+
+    &.oa-prev
+      right 64px
+      
+      &:before
+        transform rotate(-45deg)
+        margin-left -7px
+
+      &:after
+        transform rotate(45deg)
+        margin-left -7px
+
+    &.oa-next
+      right 16px
+
+  .oa-slide-list
+    position relative
+    width 100%
+    height 100%
+    list-style-type none
+    padding 0
+    margin 0
+    overflow hidden
+    background white
+
+    .oa-slide
+      position absolute
+      display block
+      top 0
+      left 0
+      width 100%
+      height 100%
+      transition left 0.3s
+      z-index -1
+
+      &.slide-off
+        animation slideOff 0.3s ease-in
+        
+      &.next
+        z-index 105
+
+      &.front
+        z-index 110
+
+      a.oa-slide-link
+        display: block
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+        color inherit
+        z-index 101
+
+        .oa-slide-image
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+
+          & > *
+            position absolute
+            left 0
+            top 0
+            width 100%
+            height 100%
+            background-repeat no-repeat
+            background-size cover
+            background-position 50% 50%
+        
+  .oa-slide-content
+    position absolute
+    bottom 0
+    left 0
+    width 320px
+    padding 30px 60px 50px
+    transition left 0.3s
+    background-color #fff
+    z-index 140
+    pointer-events none
+
+    @media (max-width: 500px)
+      display none
+
+    h2
+      text-transform uppercase
+
+    .oa-slide-button
+      width 38px
+      height 38px
+      display block
+      position relative
+      background-color #363636
+      border-radius 999px
+      transition transform 0.3s
+
+      &.rotate-me
+        transform rotate(90deg)
+
+      &:after,
+      &:before
+        position absolute
+        content ''
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)
+        background #fff
+
+      &:before
+        width: 16px;
+        height: 1px;
+
+      &:after
+        width: 1px;
+        height: 16px;
+
+@keyframes slideOff {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  99% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
